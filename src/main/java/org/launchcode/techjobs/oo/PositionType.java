@@ -35,9 +35,7 @@ public class PositionType {
     //  custom toString() method that returns the data stored in 'value'.
     @Override
     public String toString() {
-        return "PositionType{" +
-                "value='" + value + '\'' +
-                '}';
+        return value;
     }
     // custom equals and hashCode methods. (two PositionType objects are "equal" when id fields match
     @Override

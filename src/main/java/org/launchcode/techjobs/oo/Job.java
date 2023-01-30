@@ -1,5 +1,5 @@
 package org.launchcode.techjobs.oo;
-
+//org.launchcode.techjobs.oo.test
 import java.util.Objects;
 
 public class Job {
@@ -7,20 +7,22 @@ public class Job {
     private int id;
     private static int nextId = 1;
 
-    //constructor to initialize a unique ID
-    public Job() {
-        id = nextId;
-        nextId++;
-    }
+
     private String name;
     private Employer employer;
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
+    //constructor to initialize a unique ID
+    public Job() {
+        this.id = nextId;
+        nextId++;
+    }
+
     // constructors to initialize the other five fields AND call the first in order to initialize
     //  the 'id' field
-      public Job(String value) {
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
        this();
        this.name = name;
        this.employer = employer;
