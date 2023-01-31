@@ -42,26 +42,46 @@ public class JobTest {
     //When passed a Job object, it should return a string that contains a blank line before and after
     // the job information.
 
-//    @Test
-//    public void testToStringStartsAndEndsWithNewLine() {
-//
-//    }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Web Developer", new Employer("LaunchCode"), new Location("StL"), new PositionType("Back-end developer"), new CoreCompetency("Java"));
+        char firstChar = job.toString().charAt(0);
+        char lastChar = job.toString().charAt(job.toString().length()-1);
+        assertEquals('\n',firstChar);
+        assertEquals('\n', lastChar);
+    }
 
     // The string should contain a label for each field, followed by the data
     // stored in that field. Each field should be on its own line.
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
-        assertEquals(toString(),toString());
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertEquals("\nID: " + job1.getId() + "\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n",job1.toString());
+
+    }
+//
+//    If a field is empty, the method should add, Data not available after the label.
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job1 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertEquals("\nID: " + job1.getId() + "\n" +
+                "Name: Product tester\n" +
+                "Employer: Data not available\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n",job1.toString());
+
     }
 
-    //If a field is empty, the method should add, “Data not available” after the label.
-//    @Test
-//    public void testToStringHandlesEmptyField() {
-//
-//    }
-//
 //
     //(Bonus) If a Job object ONLY contains data for the id field, the method should return,
-    // “OOPS! This job does not seem to exist.”
+    // OOPS! This job does not seem to exist.
 }
